@@ -1,5 +1,8 @@
 # EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
 
+### Name : Shyam Kumar A
+### Reg No : 212221230098
+
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
  
