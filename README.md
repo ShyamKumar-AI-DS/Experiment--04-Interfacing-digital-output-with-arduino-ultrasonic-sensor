@@ -1,4 +1,4 @@
-# EXPERIMENT-NO--05-Distance measurement using Ultrasonic sensor
+# EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
 
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
@@ -32,12 +32,15 @@ The ultrasound receiver (echo pin) receives the reflected sound (echo).
 The time between the transmission and reception of the signal allows us to calculate the distance to an object. This is possible because we know the sound’s velocity in the air. Here’s the formula:
 
 distance to an object = ((speed of sound in the air)*time)/2
-speed of sound in the air at 20ºC (68ºF) = 343m/s
+speed of sound in the air at 20ºC (68ºF) = 343m/s.
 
 ### FIGURE 01 CIRCUIT OF INTERFACING ULTRASONIC SENSOR 
 
 
-![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
+![image](ex4robo.png)
+
+### Serial Monitor :
+![output](ex4robo3.png)
 
 
 
@@ -55,38 +58,50 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+~~~
+const int trigpin = 2;
+const int echopin = 4;
+long duration;
+int dist;
 
+void setup(){
+  pinMode(trigpin,OUTPUT);
+  pinMode(echopin,INPUT);
+  Serial.begin(9600);
+}
 
-
-
-
+void loop()
+{
+  digitalWrite(trigpin,LOW);
+  delay(20);
+  digitalWrite(trigpin,HIGH);
+  delay(20);
+  digitalWrite(trigpin,LOW);
+  duration  = pulseIn(echopin,HIGH);
+  dist = duration * 0.034/2;
+  Serial.print("\nDistance = ");
+  Serial.print(dist);
+  Serial.println("CM");
+  delay(500);
+}
+~~~
 
 ### Distance vs measurement table 
-
-			
- 
-			
-			
 			
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
-			
-			
-			
-			
-			Average error = sum/ number of readings 
- 
-
+![image](ex4robo2.png)
+~~~
+		N   = 5
+		AVG = 10.6
+	Average error = sum/ number of readings 
+		AVG = 10.6/5
+		    = 2.12
+~~~
 
 
+### RESULTS :
+Thus the average error is calculated successfully
 
-
-
-
-
-### RESULTS
 
 
 
